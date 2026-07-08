@@ -1,0 +1,282 @@
+<?php
+session_start();
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Nursing Information System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="dashboard.php" class="nav-brand">
+                🏥 Nursing Information System
+            </a>
+            <ul class="nav-menu">
+                <li><a href="dashboard.php" class="nav-link active">📊 Dashboard</a></li>
+                <li><a href="patient_profile.php" class="nav-link">👤 Patient Profile</a></li>
+                <li><a href="vitals.php" class="nav-link">💓 Vitals</a></li>
+                <li><a href="nursing_notes.php" class="nav-link">📝 Notes</a></li>
+                <li><a href="care_plan.php" class="nav-link">📋 Care Plan</a></li>
+                <li><a href="medication.php" class="nav-link">💊 Medication</a></li>
+                <li><a href="reports.php" class="nav-link">📈 Reports</a></li>
+                <li><a href="settings.php" class="nav-link">⚙️ Settings</a></li>
+                <li><a href="login.php" class="nav-link">🚪 Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="dashboard-header">
+        <div class="container">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
+                <div>
+                    <h1 style="font-size: 36px; margin-bottom: 10px; font-weight: 800;">Welcome back, Nurse Sarah 👋</h1>
+                    <p style="opacity: 0.95; font-size: 16px;">Shift: Day Shift • Unit: ICU • Date: <?php echo date('F d, Y'); ?></p>
+                </div>
+                <div style="display: flex; gap: 15px;">
+                    <div style="background: rgba(255,255,255,0.15); padding: 15px 25px; border-radius: 12px; backdrop-filter: blur(10px);">
+                        <div style="font-size: 24px; font-weight: 700;">12</div>
+                        <div style="font-size: 12px; opacity: 0.9;">Patients</div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.15); padding: 15px 25px; border-radius: 12px; backdrop-filter: blur(10px);">
+                        <div style="font-size: 24px; font-weight: 700;">3</div>
+                        <div style="font-size: 12px; opacity: 0.9;">Critical</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Alerts Section -->
+        <div class="alert alert-danger fade-in">
+            <span>🚨</span>
+            <div>
+                <strong>Critical Alert:</strong> Patient John Doe (Room 302) - Blood pressure elevated (165/95)
+            </div>
+        </div>
+        
+        <div class="alert alert-warning fade-in">
+            <span>⚠️</span>
+            <div>
+                <strong>Warning:</strong> Medication due for Patient Jane Smith in 15 minutes
+            </div>
+        </div>
+
+        <!-- Statistics Cards -->
+        <div class="grid grid-4" style="margin-bottom: 30px;">
+            <div class="stat-card fade-in" style="border-left-color: #667eea;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+                    <span style="font-size: 32px;">👥</span>
+                    <span class="badge badge-primary">+2 today</span>
+                </div>
+                <div class="stat-value">12</div>
+                <div class="stat-label">Total Patients</div>
+            </div>
+            <div class="stat-card fade-in" style="border-left-color: #ef4444;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+                    <span style="font-size: 32px;">🚨</span>
+                    <span class="badge badge-danger">High Priority</span>
+                </div>
+                <div class="stat-value" style="background: linear-gradient(135deg, #ef4444, #dc2626); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">3</div>
+                <div class="stat-label">Critical Care</div>
+            </div>
+            <div class="stat-card fade-in" style="border-left-color: #f59e0b;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+                    <span style="font-size: 32px;">💊</span>
+                    <span class="badge badge-warning">Due soon</span>
+                </div>
+                <div class="stat-value" style="background: linear-gradient(135deg, #f59e0b, #d97706); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">5</div>
+                <div class="stat-label">Medications Due</div>
+            </div>
+            <div class="stat-card fade-in" style="border-left-color: #10b981;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+                    <span style="font-size: 32px;">💓</span>
+                    <span class="badge badge-success">On track</span>
+                </div>
+                <div class="stat-value" style="background: linear-gradient(135deg, #10b981, #059669); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">8</div>
+                <div class="stat-label">Vitals Pending</div>
+            </div>
+        </div>
+
+        <!-- Patient List -->
+        <div class="card fade-in">
+            <div class="card-header">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <span style="font-size: 28px;">🏥</span>
+                    <h2 class="card-title">Patient List</h2>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <div class="search-box" style="margin-bottom: 0; width: 250px;">
+                        <input type="text" placeholder="Search patients...">
+                    </div>
+                    <button class="btn btn-primary" style="padding: 12px 20px;">➕ Add Patient</button>
+                </div>
+            </div>
+            
+            <div class="table-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Patient ID</th>
+                            <th>Name</th>
+                            <th>Room</th>
+                            <th>Age</th>
+                            <th>Status</th>
+                            <th>Admission Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>P-001</td>
+                            <td>John Doe</td>
+                            <td>302</td>
+                            <td>65</td>
+                            <td><span class="badge badge-danger">Critical</span></td>
+                            <td>2024-01-15</td>
+                            <td>
+                                <button class="btn btn-primary" style="padding: 6px 12px; font-size: 12px;">View</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>P-002</td>
+                            <td>Jane Smith</td>
+                            <td>304</td>
+                            <td>42</td>
+                            <td><span class="badge badge-warning">Stable</span></td>
+                            <td>2024-01-18</td>
+                            <td>
+                                <button class="btn btn-primary" style="padding: 6px 12px; font-size: 12px;">View</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>P-003</td>
+                            <td>Robert Johnson</td>
+                            <td>301</td>
+                            <td>58</td>
+                            <td><span class="badge badge-success">Recovering</span></td>
+                            <td>2024-01-20</td>
+                            <td>
+                                <button class="btn btn-primary" style="padding: 6px 12px; font-size: 12px;">View</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>P-004</td>
+                            <td>Emily Davis</td>
+                            <td>303</td>
+                            <td>71</td>
+                            <td><span class="badge badge-danger">Critical</span></td>
+                            <td>2024-01-22</td>
+                            <td>
+                                <button class="btn btn-primary" style="padding: 6px 12px; font-size: 12px;">View</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>P-005</td>
+                            <td>Michael Brown</td>
+                            <td>305</td>
+                            <td>55</td>
+                            <td><span class="badge badge-warning">Stable</span></td>
+                            <td>2024-01-23</td>
+                            <td>
+                                <button class="btn btn-primary" style="padding: 6px 12px; font-size: 12px;">View</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="grid grid-3" style="margin-top: 30px;">
+            <div class="card fade-in">
+                <div class="card-header">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span style="font-size: 24px;">⚡</span>
+                        <h3 class="card-title">Quick Actions</h3>
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                    <a href="nursing_notes.php" class="btn btn-primary" style="padding: 15px; font-size: 15px; background: linear-gradient(135deg, #667eea, #764ba2); border: none;">
+                        <span style="margin-right: 10px;">📝</span>Add Nursing Note
+                    </a>
+                    <a href="vitals.php" class="btn btn-secondary" style="padding: 15px; font-size: 15px; background: linear-gradient(135deg, #10b981, #059669); border: none;">
+                        <span style="margin-right: 10px;">💓</span>Record Vitals
+                    </a>
+                    <a href="medication.php" class="btn btn-outline" style="padding: 15px; font-size: 15px;">
+                        <span style="margin-right: 10px;">💊</span>Administer Medication
+                    </a>
+                </div>
+            </div>
+            
+            <div class="card fade-in">
+                <div class="card-header">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span style="font-size: 24px;">📋</span>
+                        <h3 class="card-title">Upcoming Tasks</h3>
+                    </div>
+                </div>
+                <ul style="list-style: none;">
+                    <li style="padding: 15px; border-bottom: 1px solid var(--gray-200); display: flex; align-items: center; gap: 12px; border-radius: 8px; transition: var(--transition); background: rgba(239, 68, 68, 0.05);">
+                        <span style="font-size: 20px;">🚨</span>
+                        <div style="flex: 1;">
+                            <strong>Check vitals - Room 302</strong>
+                            <div style="font-size: 12px; color: var(--danger-color); font-weight: 600;">Due in 10 min</div>
+                        </div>
+                    </li>
+                    <li style="padding: 15px; border-bottom: 1px solid var(--gray-200); display: flex; align-items: center; gap: 12px; border-radius: 8px; transition: var(--transition); background: rgba(245, 158, 11, 0.05);">
+                        <span style="font-size: 20px;">⚠️</span>
+                        <div style="flex: 1;">
+                            <strong>Medication - Room 304</strong>
+                            <div style="font-size: 12px; color: var(--warning-color); font-weight: 600;">Due in 25 min</div>
+                        </div>
+                    </li>
+                    <li style="padding: 15px; border-bottom: 1px solid var(--gray-200); display: flex; align-items: center; gap: 12px; border-radius: 8px; transition: var(--transition); background: rgba(16, 185, 129, 0.05);">
+                        <span style="font-size: 20px;">✅</span>
+                        <div style="flex: 1;">
+                            <strong>Daily assessment - Room 301</strong>
+                            <div style="font-size: 12px; color: var(--success-color); font-weight: 600;">Scheduled</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="card fade-in">
+                <div class="card-header">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span style="font-size: 24px;">🕐</span>
+                        <h3 class="card-title">Recent Activity</h3>
+                    </div>
+                </div>
+                <ul style="list-style: none;">
+                    <li style="padding: 15px; border-bottom: 1px solid var(--gray-200); font-size: 14px; display: flex; align-items: center; gap: 12px; transition: var(--transition);">
+                        <span style="font-size: 18px;">💓</span>
+                        <div>
+                            <strong>10:30 AM</strong> - Vitals recorded for P-001
+                            <div style="font-size: 12px; color: var(--gray-500);">by Nurse Sarah</div>
+                        </div>
+                    </li>
+                    <li style="padding: 15px; border-bottom: 1px solid var(--gray-200); font-size: 14px; display: flex; align-items: center; gap: 12px; transition: var(--transition);">
+                        <span style="font-size: 18px;">💊</span>
+                        <div>
+                            <strong>10:15 AM</strong> - Medication administered to P-002
+                            <div style="font-size: 12px; color: var(--gray-500);">by Nurse Mike</div>
+                        </div>
+                    </li>
+                    <li style="padding: 15px; border-bottom: 1px solid var(--gray-200); font-size: 14px; display: flex; align-items: center; gap: 12px; transition: var(--transition);">
+                        <span style="font-size: 18px;">📝</span>
+                        <div>
+                            <strong>10:00 AM</strong> - Nursing note added for P-003
+                            <div style="font-size: 12px; color: var(--gray-500);">by Nurse Sarah</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

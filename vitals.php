@@ -1,0 +1,284 @@
+<?php
+session_start();
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitals Monitoring - Nursing Information System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="dashboard.php" class="nav-brand">
+                🏥 Nursing Information System
+            </a>
+            <ul class="nav-menu">
+                <li><a href="dashboard.php" class="nav-link">📊 Dashboard</a></li>
+                <li><a href="patient_profile.php" class="nav-link">👤 Patient Profile</a></li>
+                <li><a href="vitals.php" class="nav-link active">💓 Vitals</a></li>
+                <li><a href="nursing_notes.php" class="nav-link">📝 Notes</a></li>
+                <li><a href="care_plan.php" class="nav-link">📋 Care Plan</a></li>
+                <li><a href="medication.php" class="nav-link">💊 Medication</a></li>
+                <li><a href="reports.php" class="nav-link">📈 Reports</a></li>
+                <li><a href="settings.php" class="nav-link">⚙️ Settings</a></li>
+                <li><a href="login.php" class="nav-link">🚪 Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="dashboard-header">
+        <div class="container">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px;">
+                <div>
+                    <h1 style="font-size: 28px; margin-bottom: 5px; font-weight: 800;">Vitals Monitoring 💓</h1>
+                    <p style="opacity: 0.95; font-size: 14px;">Patient: John Doe (P-001) • Room: 302</p>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <div style="background: rgba(255,255,255,0.15); padding: 10px 20px; border-radius: 8px; backdrop-filter: blur(10px); text-align: center;">
+                        <div style="font-size: 18px; font-weight: 700;">165/95</div>
+                        <div style="font-size: 10px; opacity: 0.9;">BP</div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.15); padding: 10px 20px; border-radius: 8px; backdrop-filter: blur(10px); text-align: center;">
+                        <div style="font-size: 18px; font-weight: 700;">92</div>
+                        <div style="font-size: 10px; opacity: 0.9;">HR</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Current Vitals -->
+        <div class="grid grid-4" style="margin-bottom: 20px;">
+            <div class="card fade-in">
+                <div class="card-header">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="font-size: 20px;">💓</span>
+                        <h3 class="card-title">BP</h3>
+                    </div>
+                </div>
+                <div style="text-align: center; padding: 15px 0;">
+                    <div style="font-size: 36px; font-weight: 700; color: var(--danger-color);">165/95</div>
+                    <div style="color: var(--gray-500); margin-top: 5px; font-size: 12px;">mmHg</div>
+                    <span class="badge badge-danger" style="margin-top: 10px; font-size: 11px;">🚨 Elevated</span>
+                </div>
+            </div>
+            
+            <div class="card fade-in">
+                <div class="card-header">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="font-size: 20px;">❤️</span>
+                        <h3 class="card-title">HR</h3>
+                    </div>
+                </div>
+                <div style="text-align: center; padding: 15px 0;">
+                    <div style="font-size: 36px; font-weight: 700; color: var(--warning-color);">92</div>
+                    <div style="color: var(--gray-500); margin-top: 5px; font-size: 12px;">bpm</div>
+                    <span class="badge badge-warning" style="margin-top: 10px; font-size: 11px;">⚠️ High</span>
+                </div>
+            </div>
+            
+            <div class="card fade-in">
+                <div class="card-header">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="font-size: 20px;">🌡️</span>
+                        <h3 class="card-title">Temp</h3>
+                    </div>
+                </div>
+                <div style="text-align: center; padding: 15px 0;">
+                    <div style="font-size: 36px; font-weight: 700; color: var(--success-color);">98.6</div>
+                    <div style="color: var(--gray-500); margin-top: 5px; font-size: 12px;">°F</div>
+                    <span class="badge badge-success" style="margin-top: 10px; font-size: 11px;">✅ Normal</span>
+                </div>
+            </div>
+            
+            <div class="card fade-in">
+                <div class="card-header">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="font-size: 20px;">💨</span>
+                        <h3 class="card-title">O2</h3>
+                    </div>
+                </div>
+                <div style="text-align: center; padding: 15px 0;">
+                    <div style="font-size: 36px; font-weight: 700; color: var(--success-color);">96</div>
+                    <div style="color: var(--gray-500); margin-top: 5px; font-size: 12px;">%</div>
+                    <span class="badge badge-success" style="margin-top: 10px; font-size: 11px;">✅ Normal</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vitals History Graphs -->
+        <div class="grid grid-2" style="margin-bottom: 20px;">
+            <div class="vital-card fade-in">
+                <div class="card-header">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="font-size: 18px;">📊</span>
+                        <h3 class="card-title">BP Trend (24h)</h3>
+                    </div>
+                </div>
+                <div class="vital-chart" style="height: 150px;">
+                    <div class="vital-bar" style="height: 85%;" data-value="170/95"></div>
+                    <div class="vital-bar" style="height: 80%;" data-value="165/92"></div>
+                    <div class="vital-bar" style="height: 75%;" data-value="160/90"></div>
+                    <div class="vital-bar" style="height: 82%;" data-value="168/94"></div>
+                    <div class="vital-bar" style="height: 78%;" data-value="162/91"></div>
+                    <div class="vital-bar" style="height: 85%;" data-value="165/95"></div>
+                    <div class="vital-bar" style="height: 70%;" data-value="155/88"></div>
+                    <div class="vital-bar" style="height: 75%;" data-value="158/89"></div>
+                </div>
+                <div style="display: flex; justify-content: space-around; margin-top: 8px; font-size: 11px; color: var(--gray-500);">
+                    <span>6AM</span>
+                    <span>9AM</span>
+                    <span>12PM</span>
+                    <span>3PM</span>
+                    <span>6PM</span>
+                    <span>9PM</span>
+                    <span>12AM</span>
+                    <span>3AM</span>
+                </div>
+            </div>
+            
+            <div class="vital-card fade-in">
+                <div class="card-header">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="font-size: 18px;">📊</span>
+                        <h3 class="card-title">HR Trend (24h)</h3>
+                    </div>
+                </div>
+                <div class="vital-chart" style="height: 150px;">
+                    <div class="vital-bar" style="height: 60%; background: linear-gradient(to top, #ef4444, #f87171);" data-value="88"></div>
+                    <div class="vital-bar" style="height: 65%; background: linear-gradient(to top, #ef4444, #f87171);" data-value="90"></div>
+                    <div class="vital-bar" style="height: 70%; background: linear-gradient(to top, #f97316, #fb923c);" data-value="95"></div>
+                    <div class="vital-bar" style="height: 68%; background: linear-gradient(to top, #f97316, #fb923c);" data-value="92"></div>
+                    <div class="vital-bar" style="height: 62%; background: linear-gradient(to top, #ef4444, #f87171);" data-value="89"></div>
+                    <div class="vital-bar" style="height: 66%; background: linear-gradient(to top, #f97316, #fb923c);" data-value="91"></div>
+                    <div class="vital-bar" style="height: 58%; background: linear-gradient(to top, #22c55e, #4ade80);" data-value="86"></div>
+                    <div class="vital-bar" style="height: 64%; background: linear-gradient(to top, #f97316, #fb923c);" data-value="90"></div>
+                </div>
+                <div style="display: flex; justify-content: space-around; margin-top: 8px; font-size: 11px; color: var(--gray-500);">
+                    <span>6AM</span>
+                    <span>9AM</span>
+                    <span>12PM</span>
+                    <span>3PM</span>
+                    <span>6PM</span>
+                    <span>9PM</span>
+                    <span>12AM</span>
+                    <span>3AM</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-2" style="margin-bottom: 20px;">
+            <div class="vital-card fade-in">
+                <div class="card-header">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="font-size: 18px;">📊</span>
+                        <h3 class="card-title">Temp Trend (24h)</h3>
+                    </div>
+                </div>
+                <div class="vital-chart" style="height: 150px;">
+                    <div class="vital-bar" style="height: 65%; background: linear-gradient(to top, #22c55e, #4ade80);" data-value="98.4"></div>
+                    <div class="vital-bar" style="height: 68%; background: linear-gradient(to top, #22c55e, #4ade80);" data-value="98.6"></div>
+                    <div class="vital-bar" style="height: 70%; background: linear-gradient(to top, #22c55e, #4ade80);" data-value="98.8"></div>
+                    <div class="vital-bar" style="height: 67%; background: linear-gradient(to top, #22c55e, #4ade80);" data-value="98.5"></div>
+                    <div class="vital-bar" style="height: 66%; background: linear-gradient(to top, #22c55e, #4ade80);" data-value="98.6"></div>
+                    <div class="vital-bar" style="height: 69%; background: linear-gradient(to top, #22c55e, #4ade80);" data-value="98.7"></div>
+                    <div class="vital-bar" style="height: 65%; background: linear-gradient(to top, #22c55e, #4ade80);" data-value="98.4"></div>
+                    <div class="vital-bar" style="height: 68%; background: linear-gradient(to top, #22c55e, #4ade80);" data-value="98.6"></div>
+                </div>
+                <div style="display: flex; justify-content: space-around; margin-top: 8px; font-size: 11px; color: var(--gray-500);">
+                    <span>6AM</span>
+                    <span>9AM</span>
+                    <span>12PM</span>
+                    <span>3PM</span>
+                    <span>6PM</span>
+                    <span>9PM</span>
+                    <span>12AM</span>
+                    <span>3AM</span>
+                </div>
+            </div>
+            
+            <div class="vital-card fade-in">
+                <div class="card-header">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="font-size: 18px;">📊</span>
+                        <h3 class="card-title">O2 Trend (24h)</h3>
+                    </div>
+                </div>
+                <div class="vital-chart" style="height: 150px;">
+                    <div class="vital-bar" style="height: 96%; background: linear-gradient(to top, #06b6d4, #22d3ee);" data-value="96"></div>
+                    <div class="vital-bar" style="height: 97%; background: linear-gradient(to top, #06b6d4, #22d3ee);" data-value="97"></div>
+                    <div class="vital-bar" style="height: 95%; background: linear-gradient(to top, #06b6d4, #22d3ee);" data-value="95"></div>
+                    <div class="vital-bar" style="height: 96%; background: linear-gradient(to top, #06b6d4, #22d3ee);" data-value="96"></div>
+                    <div class="vital-bar" style="height: 98%; background: linear-gradient(to top, #06b6d4, #22d3ee);" data-value="98"></div>
+                    <div class="vital-bar" style="height: 96%; background: linear-gradient(to top, #06b6d4, #22d3ee);" data-value="96"></div>
+                    <div class="vital-bar" style="height: 97%; background: linear-gradient(to top, #06b6d4, #22d3ee);" data-value="97"></div>
+                    <div class="vital-bar" style="height: 96%; background: linear-gradient(to top, #06b6d4, #22d3ee);" data-value="96"></div>
+                </div>
+                <div style="display: flex; justify-content: space-around; margin-top: 8px; font-size: 11px; color: var(--gray-500);">
+                    <span>6AM</span>
+                    <span>9AM</span>
+                    <span>12PM</span>
+                    <span>3PM</span>
+                    <span>6PM</span>
+                    <span>9PM</span>
+                    <span>12AM</span>
+                    <span>3AM</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Record New Vitals Form -->
+        <div class="card fade-in">
+            <div class="card-header">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span style="font-size: 20px;">📝</span>
+                    <h3 class="card-title">Record Vitals</h3>
+                </div>
+            </div>
+            <form>
+                <div class="grid grid-4">
+                    <div class="form-group">
+                        <label class="form-label" style="font-size: 12px;">BP (mmHg)</label>
+                        <input type="text" class="form-control" style="padding: 8px 12px; font-size: 13px;" placeholder="120/80">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" style="font-size: 12px;">HR (bpm)</label>
+                        <input type="number" class="form-control" style="padding: 8px 12px; font-size: 13px;" placeholder="72">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" style="font-size: 12px;">Temp (°F)</label>
+                        <input type="number" step="0.1" class="form-control" style="padding: 8px 12px; font-size: 13px;" placeholder="98.6">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" style="font-size: 12px;">O2 (%)</label>
+                        <input type="number" class="form-control" style="padding: 8px 12px; font-size: 13px;" placeholder="98">
+                    </div>
+                </div>
+                <div class="grid grid-3">
+                    <div class="form-group">
+                        <label class="form-label" style="font-size: 12px;">RR (/min)</label>
+                        <input type="number" class="form-control" style="padding: 8px 12px; font-size: 13px;" placeholder="16">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" style="font-size: 12px;">Pain (0-10)</label>
+                        <input type="number" min="0" max="10" class="form-control" style="padding: 8px 12px; font-size: 13px;" placeholder="3">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" style="font-size: 12px;">Glucose (mg/dL)</label>
+                        <input type="number" class="form-control" style="padding: 8px 12px; font-size: 13px;" placeholder="110">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" style="font-size: 12px;">Notes</label>
+                    <textarea class="form-control" style="padding: 8px 12px; font-size: 13px; min-height: 60px;" placeholder="Additional observations..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="padding: 10px 20px; font-size: 13px; background: linear-gradient(135deg, #667eea, #764ba2); border: none;">💾 Save Vitals</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
