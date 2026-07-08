@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nursing Notes - Nursing Information System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="dashboard.html" class="nav-brand">
+                🏥 Nursing Information System
+            </a>
+            <ul class="nav-menu">
+                <li><a href="dashboard.html" class="nav-link">📊 Dashboard</a></li>
+                <li><a href="patient_profile.html" class="nav-link">👤 Patient Profile</a></li>
+                <li><a href="vitals.html" class="nav-link">💓 Vitals</a></li>
+                <li><a href="nursing_notes.html" class="nav-link active">📝 Notes</a></li>
+                <li><a href="care_plan.html" class="nav-link">📋 Care Plan</a></li>
+                <li><a href="medication.html" class="nav-link">💊 Medication</a></li>
+                <li><a href="reports.html" class="nav-link">📈 Reports</a></li>
+                <li><a href="settings.html" class="nav-link">⚙️ Settings</a></li>
+                <li><a href="login.html" class="nav-link">🚪 Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="dashboard-header">
+        <div class="container">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px;">
+                <div>
+                    <h1 style="font-size: 28px; margin-bottom: 5px; font-weight: 800;">Nursing Notes 📝</h1>
+                    <p style="opacity: 0.95; font-size: 14px;">Patient: John Doe (P-001) • Room: 302</p>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <div style="background: rgba(255,255,255,0.15); padding: 10px 20px; border-radius: 8px; backdrop-filter: blur(10px); text-align: center;">
+                        <div style="font-size: 18px; font-weight: 700;">342</div>
+                        <div style="font-size: 10px; opacity: 0.9;">Total Notes</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="grid grid-3" style="margin-bottom: 20px;">
+            <!-- Add New Note -->
+            <div class="card fade-in" style="grid-column: span 2;">
+                <div class="card-header">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="font-size: 20px;">📝</span>
+                        <h3 class="card-title">Add Note</h3>
+                    </div>
+                </div>
+                <form>
+                    <div class="grid grid-2">
+                        <div class="form-group">
+                            <label class="form-label" style="font-size: 12px;">Type</label>
+                            <select class="form-control" style="padding: 8px 12px; font-size: 13px;">
+                                <option value="">Select type...</option>
+                                <option value="assessment">Assessment</option>
+                                <option value="intervention">Intervention</option>
+                                <option value="progress">Progress Note</option>
+                                <option value="evaluation">Evaluation</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" style="font-size: 12px;">Date & Time</label>
+                            <input type="datetime-local" class="form-control" style="padding: 8px 12px; font-size: 13px;">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" style="font-size: 12px;">Subjective</label>
+                        <textarea class="form-control" style="padding: 8px 12px; font-size: 13px; min-height: 50px;" placeholder="Patient reports..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" style="font-size: 12px;">Objective</label>
+                        <textarea class="form-control" style="padding: 8px 12px; font-size: 13px; min-height: 50px;" placeholder="Vitals, assessment..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" style="font-size: 12px;">Assessment</label>
+                        <textarea class="form-control" style="padding: 8px 12px; font-size: 13px; min-height: 50px;" placeholder="Clinical judgment..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" style="font-size: 12px;">Plan</label>
+                        <textarea class="form-control" style="padding: 8px 12px; font-size: 13px; min-height: 50px;" placeholder="Interventions..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="padding: 10px 20px; font-size: 13px; background: linear-gradient(135deg, #667eea, #764ba2); border: none;">💾 Save Note</button>
+                </form>
+            </div>
+            
+            <!-- Quick Templates -->
+            <div class="card fade-in">
+                <div class="card-header">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="font-size: 20px;">📋</span>
+                        <h3 class="card-title">Templates</h3>
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <button class="btn btn-outline" style="text-align: left; padding: 10px 12px; font-size: 12px;">🩺 Assessment</button>
+                    <button class="btn btn-outline" style="text-align: left; padding: 10px 12px; font-size: 12px;">💉 Medication</button>
+                    <button class="btn btn-outline" style="text-align: left; padding: 10px 12px; font-size: 12px;">🚨 Critical</button>
+                    <button class="btn btn-outline" style="text-align: left; padding: 10px 12px; font-size: 12px;">🔄 Handoff</button>
+                    <button class="btn btn-outline" style="text-align: left; padding: 10px 12px; font-size: 12px;">📋 Discharge</button>
+                    <button class="btn btn-outline" style="text-align: left; padding: 10px 12px; font-size: 12px;">💓 Cardiac</button>
+                    <button class="btn btn-outline" style="text-align: left; padding: 10px 12px; font-size: 12px;">🫁 Respiratory</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Notes -->
+        <div class="card fade-in" style="margin-bottom: 20px;">
+            <div class="card-header">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span style="font-size: 20px;">📜</span>
+                    <h3 class="card-title">Recent Notes</h3>
+                </div>
+                <div class="search-box" style="margin-bottom: 0; width: 200px;">
+                    <input type="text" style="padding: 8px 12px 8px 35px; font-size: 12px;" placeholder="Search...">
+                </div>
+            </div>
+            
+            <div class="table-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th style="padding: 10px; font-size: 11px;">Time</th>
+                            <th style="padding: 10px; font-size: 11px;">Type</th>
+                            <th style="padding: 10px; font-size: 11px;">Nurse</th>
+                            <th style="padding: 10px; font-size: 11px;">Summary</th>
+                            <th style="padding: 10px; font-size: 11px;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 10px; font-size: 12px;">10:30 AM</td>
+                            <td style="padding: 10px;"><span class="badge badge-primary" style="font-size: 10px;">Assessment</span></td>
+                            <td style="padding: 10px; font-size: 12px;">Nurse Sarah</td>
+                            <td style="padding: 10px; font-size: 12px;">Patient reports chest pain...</td>
+                            <td style="padding: 10px;">
+                                <button class="btn btn-primary" style="padding: 4px 8px; font-size: 10px;">View</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; font-size: 12px;">08:00 AM</td>
+                            <td style="padding: 10px;"><span class="badge badge-secondary" style="font-size: 10px;">Intervention</span></td>
+                            <td style="padding: 10px; font-size: 12px;">Nurse Mike</td>
+                            <td style="padding: 10px; font-size: 12px;">Administered Lasix 40mg IV...</td>
+                            <td style="padding: 10px;">
+                                <button class="btn btn-primary" style="padding: 4px 8px; font-size: 10px;">View</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; font-size: 12px;">06:15 AM</td>
+                            <td style="padding: 10px;"><span class="badge badge-info" style="font-size: 10px;">Progress</span></td>
+                            <td style="padding: 10px; font-size: 12px;">Nurse Sarah</td>
+                            <td style="padding: 10px; font-size: 12px;">Patient slept well...</td>
+                            <td style="padding: 10px;">
+                                <button class="btn btn-primary" style="padding: 4px 8px; font-size: 10px;">View</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Note Detail View -->
+        <div class="card fade-in">
+            <div class="card-header">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span style="font-size: 20px;">📄</span>
+                    <h3 class="card-title">Note Detail</h3>
+                </div>
+            </div>
+            <div style="padding: 15px; background: var(--gray-100); border-radius: 8px; margin-bottom: 15px;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 12px;">
+                    <div><strong>Date:</strong> Jan 24, 2024 at 10:30 AM</div>
+                    <div><span class="badge badge-primary" style="font-size: 10px;">Assessment</span></div>
+                </div>
+                
+                <div style="margin-bottom: 10px;">
+                    <h4 style="color: var(--primary-color); margin-bottom: 5px; font-size: 13px;">Subjective:</h4>
+                    <p style="background: var(--white); padding: 10px; border-radius: 6px; font-size: 12px;">Patient reports chest pain 3/10, described as pressure-like sensation.</p>
+                </div>
+                
+                <div style="margin-bottom: 10px;">
+                    <h4 style="color: var(--primary-color); margin-bottom: 5px; font-size: 13px;">Objective:</h4>
+                    <p style="background: var(--white); padding: 10px; border-radius: 6px; font-size: 12px;">BP 165/95, HR 92, RR 18, Temp 98.6°F, O2 sat 96% on room air.</p>
+                </div>
+                
+                <div style="margin-bottom: 10px;">
+                    <h4 style="color: var(--primary-color); margin-bottom: 5px; font-size: 13px;">Assessment:</h4>
+                    <p style="background: var(--white); padding: 10px; border-radius: 6px; font-size: 12px;">Chest pain likely cardiac in nature given patient history.</p>
+                </div>
+                
+                <div>
+                    <h4 style="color: var(--primary-color); margin-bottom: 5px; font-size: 13px;">Plan:</h4>
+                    <p style="background: var(--white); padding: 10px; border-radius: 6px; font-size: 12px;">1. Continue cardiac monitoring<br>2. Administer nitroglycerin 0.4mg SL if pain persists</p>
+                </div>
+            </div>
+            
+            <div style="display: flex; gap: 8px;">
+                <button class="btn btn-primary" style="padding: 8px 16px; font-size: 12px;">✏️ Edit</button>
+                <button class="btn btn-secondary" style="padding: 8px 16px; font-size: 12px;">📎 Attach</button>
+                <button class="btn btn-outline" style="padding: 8px 16px; font-size: 12px;">🖨️ Print</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
